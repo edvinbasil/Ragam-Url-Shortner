@@ -1,5 +1,5 @@
 const express = require('express')
-const app = new express();
+const app = express();
 const mongoose = require('mongoose')
 const ca = require('./models/ca')
 const crypto = require('crypto')
@@ -17,6 +17,11 @@ db.on('error', (err) => {
 })
 
 app.use(express.json())
+app.get('/',(req,res) => {
+    res.json({
+        message: "Welcome to the Ragam URL Shortner Homepage"
+    })
+})
 app.post('/api/shortner', (req, res) => {
     let originalUrl = req.body.url
     let expression = new RegExp(/^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi)
