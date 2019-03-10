@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const ca = require('./models/ca')
 const crypto = require('crypto')
 
-mongoose.connect('mongodb://localhost/caUrls', {useNewUrlParser: true})
+mongoose.connect( process.env.MONGO_URL || 'mongodb://localhost/caUrls', {useNewUrlParser: true})
 let db = mongoose.connection
 
 //Check connection
